@@ -33,7 +33,6 @@ class ProfUserRegisterSerializer(serializers.ModelSerializer):
 		return user_obj
 
 class UserLoginSerializer(serializers.Serializer):
-	# email = serializers.EmailField()
 	password = serializers.CharField()
 	username = serializers.CharField()
 	##

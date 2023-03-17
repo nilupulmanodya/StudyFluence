@@ -1,5 +1,16 @@
+import { useState } from "react";
+import { useDispatch } from 'react-redux';
+import { setSingedInAs } from '../../store/authSlice';
+
 function StudentsView(props) {
-  const authenticationType = props.authenticationType;
+  const client = props.client
+  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const dispatch = useDispatch();
+  // const singedInAs = useSelector((state) => state.auth.singedInAs);
+
   const onClickSignUpActive = () => {
     const container = document.getElementById("container");
     container.classList.add("right-panel-active");
@@ -10,29 +21,92 @@ function StudentsView(props) {
     container.classList.remove("right-panel-active");
   };
 
+  const submitSignUp = (e)=>{
+    e.preventDefault();
+      client.post(
+        "/api/stdregister",
+        {
+          email: email,
+          username: username,
+          password: password
+        }
+      )
+      .catch((error) => {
+        if (error.response) {
+          let errorData = "Internal server error please refresh and try again.."
+          if (error.response.data[0] !=="<"){
+            errorData = error.response.data[0]
+          }
+          console.log('error.response',error.response);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+          alert(errorData)
+          }
+      })      
+      .then(function(res) {
+      client.post(
+        "/api/login",
+        {
+          username: username,
+          password: password
+        }
+      ).then(function(res) {
+        const userGroup = res.data.userGroup
+        dispatch(setSingedInAs(userGroup));
+          });})
+  }
+
+  const submitLogIn =(e)=> {
+    e.preventDefault();
+    client.post(
+      "/api/login",
+      {
+        username: username,
+        password: password
+      }
+    )
+    .catch((error) => {
+      if (error.response) {
+        let errorData = "Internal server error please refresh and try again.."
+        if (error.response.data[0] !=="<"){
+          errorData = error.response.data[0]
+        }
+        console.log('error.response',error.response);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+        alert(errorData)
+        }
+    })    
+    .then(function(res) {
+      console.log(res.data)
+      const userGroup = res.data.userGroup
+      dispatch(setSingedInAs(userGroup));
+        });
+  }
+
   return (
     <div>
-      <h2>Students Guide</h2>
+      <h2>Students View</h2>
 
       <div className="container" id="container">
         <div className="form-container sign-up-container">
-          <form action="#">
+          <form onSubmit={e => submitSignUp(e)}>
             <h1>Create Account</h1>
 
             <span>Use your email for registration</span>
-            <input type="text" placeholder="Username" />
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Password" />
-            <button>Sign Up</button>
+            <input type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} required />
+            <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required/>
+            <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)}  required/>
+            <button type="submit">Sign Up</button>
           </form>
         </div>
         <div className="form-container sign-in-container">
-          <form action="#">
+          <form onSubmit={e => submitLogIn(e)}>
             <h1>Sign in</h1>
             <span>Enter your login credientials here</span>
-            <input type="username" placeholder="User Name" />
-            <input type="password" placeholder="Password" />
-            <a href="#">Forgot your password?</a>
+            <input type="username" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} required />
+            <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)}  required/>
+            <a href="/">Forgot your password?</a>
             <button>Sign In</button>
           </form>
         </div>
@@ -74,3 +148,4 @@ function StudentsView(props) {
 }
 
 export default StudentsView;
+

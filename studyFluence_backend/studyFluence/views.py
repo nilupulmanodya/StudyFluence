@@ -11,13 +11,17 @@ class StdUserRegister(APIView):
 	permission_classes = (permissions.AllowAny,)
 	
 	def post(self, request):
-		clean_data = custom_validation(request.data)
-		serializer = StdUserRegisterSerializer(data=clean_data)
-		if serializer.is_valid(raise_exception=True):
-			user = serializer.create(clean_data)
-			if user:
-				return Response(serializer.data, status=status.HTTP_201_CREATED)
-		return Response(status=status.HTTP_400_BAD_REQUEST)
+		
+		try:
+			clean_data = custom_validation(request.data)
+			serializer = StdUserRegisterSerializer(data=clean_data)
+		
+			if serializer.is_valid(raise_exception=True):
+				user = serializer.create(clean_data)
+				if user:
+					return Response(serializer.data, status=status.HTTP_201_CREATED)
+		except Exception as error:
+			return Response(error, status=status.HTTP_400_BAD_REQUEST)
 
 
 
@@ -26,13 +30,15 @@ class ProfUserRegister(APIView):
 	permission_classes = (permissions.AllowAny,)
 	
 	def post(self, request):
-		clean_data = custom_validation(request.data)
-		serializer = ProfUserRegisterSerializer(data=clean_data)
-		if serializer.is_valid(raise_exception=True):
-			user = serializer.create(clean_data)
-			if user:
-				return Response(serializer.data, status=status.HTTP_201_CREATED)
-		return Response(status=status.HTTP_400_BAD_REQUEST)
+		try:
+			clean_data = custom_validation(request.data)
+			serializer = ProfUserRegisterSerializer(data=clean_data)
+			if serializer.is_valid(raise_exception=True):
+				user = serializer.create(clean_data)
+				if user:
+					return Response(serializer.data, status=status.HTTP_201_CREATED)
+		except Exception as error:
+			return Response(error, status=status.HTTP_400_BAD_REQUEST)
 
 
 class UserLogin(APIView):
@@ -41,17 +47,31 @@ class UserLogin(APIView):
 	##
 
 	def post(self, request):
-		data = request.data
-		# assert validate_email(data)
-		assert validate_password(data)
-		serializer = UserLoginSerializer(data=data)
-		print('serializer',serializer)
-		if serializer.is_valid(raise_exception=True):
-			user = serializer.check_user(data)
-			print('useruseruser',user)
-			print('request',request.user)
-			login(request, user)
-			return Response(serializer.data, status=status.HTTP_200_OK)
+		try:
+			data = request.data
+			# assert validate_email(data)
+			assert validate_password(data)
+			serializer = UserLoginSerializer(data=data)
+			print('serializer',serializer)
+			if serializer.is_valid(raise_exception=True):
+				user = serializer.check_user(data)
+				print('useruseruser',user)
+				print('request',request.user)
+				login(request, user)
+				print('request.user', request.user.get_username())
+				userGroup = '0'
+				
+				if request.user.groups.all()[0].name == 'std':
+					userGroup = '1'
+				elif request.user.groups.all()[0].name == 'prof':
+					userGroup = '2'
+
+				print('reg userGroup output view',userGroup)
+				return Response(data = {"data":serializer.data,"userGroup":userGroup} , status=status.HTTP_200_OK)
+		
+
+		except Exception as error:
+			return Response(error, status=status.HTTP_400_BAD_REQUEST)
 
 
 class UserLogout(APIView):
@@ -69,9 +89,19 @@ class UserView(APIView):
 	##
 
 	def get(self, request):
-		serializer = UserSerializer(request.user)
-		return Response({'user': serializer.data}, status=status.HTTP_200_OK)
+		try:
+			serializer = UserSerializer(request.user)
+			userGroup = '0'	
+			if request.user.groups.all()[0].name == 'std':
+				userGroup = '1'
+			elif request.user.groups.all()[0].name == 'prof':
+				userGroup = '2'
 
+			print('reg userGroup output view',userGroup)
+			return Response(data = {"data":serializer.data,"userGroup":userGroup} , status=status.HTTP_200_OK)
+		
+		except Exception as error:
+			return Response(error, status=status.HTTP_400_BAD_REQUEST)
 	
 class ContentView(APIView):
 	permission_classes = (permissions.IsAuthenticated,)

@@ -3,7 +3,8 @@ import "./authentication.css";
 import StudentsView from "./studentsView";
 import ProffesionalView from "./professionalsView";
 
-function Authentication() {
+function Authentication(props) {
+  const client = props.client
   const [authenticationType, setAuthenticationType] = useState("std");
 
   const onClickProffesionalsViewBtn = () => {
@@ -18,9 +19,9 @@ function Authentication() {
       <h1>Welcome to StudyFluence</h1>
 
       {authenticationType === "prof" ? (
-        <ProffesionalView authenticationType={authenticationType} />
+        <ProffesionalView authenticationType={authenticationType} client={client}/>
       ) : (
-        <StudentsView authenticationType={authenticationType} />
+        <StudentsView authenticationType={authenticationType} client={client} />
       )}
       <footer>
         {authenticationType === "prof" ? (

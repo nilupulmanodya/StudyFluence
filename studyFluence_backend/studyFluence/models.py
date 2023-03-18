@@ -1,8 +1,8 @@
-from django.db import models
 from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
-
-from django.contrib.auth.models import Group
+from django.db import models
+from django.contrib.auth.models import Group, User
+from django.conf import settings
 
 # Create your models here.
 class AppUserManager(BaseUserManager):
@@ -34,3 +34,23 @@ class AppUserManager(BaseUserManager):
 		user.is_superuser = True
 		user.save()
 		return user
+
+class Question(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    student = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    class Meta:
+        app_label = 'studyFluence'
+
+class Answer(models.Model):
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    teacher = models.ForeignKey(User, on_delete=models.CASCADE)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+
+    class Meta:
+        app_label = 'studyFluence'

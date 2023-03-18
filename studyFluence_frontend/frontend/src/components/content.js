@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import Authentication from "./authentication/authentication";
+import AuthenticatedFrame from "./authenticatedFrame"
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSingedInAs } from '../store/authSlice';
@@ -34,10 +35,10 @@ function Content() {
     client.get("/api/user")
     .catch((error) => {
       if (error.response) {
-        let errorData = "Internal server error please refresh and try again.."
-        if (error.response.data[0] !=="<"){
-          errorData = error.response.data[0]
-        }
+        // let errorData = "Internal server error please refresh and try again.."
+        // if (error.response.data[0] !=="<"){
+        //   errorData = error.response.data[0]
+        // }
         console.log('error.response',error.response);
         console.log(error.response.status);
         console.log(error.response.headers);
@@ -53,27 +54,15 @@ function Content() {
 
     console.log('singedInAs',singedInAs)
     
-
+   // dispatch(setSingedInAs('2'));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  function submitLogout(e) {
-    e.preventDefault();
-    client.post(
-      "/api/logout",
-      {withCredentials: true}
-    ).then(function(res) {
-      dispatch(setSingedInAs('0'));
-    });
-  }
 
-  return singedInAs === "1" | singedInAs === "2" ? <dev>
-            <form onSubmit={e => submitLogout(e)}>
-                  <button type="submit" variant="light">Log out</button>
-             </form>
-                <p>hehehe signed in....
-    wanna logout ?
-     </p>
-    </dev>: <Authentication client={client}/>;
+
+  return singedInAs === "1" | singedInAs === "2" ? <div>
+             < AuthenticatedFrame client={client} />
+    </div>: <  Authentication   client={client}/>;
 }
 
 export default Content;

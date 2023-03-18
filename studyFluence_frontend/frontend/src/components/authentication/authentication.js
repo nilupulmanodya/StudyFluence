@@ -16,20 +16,20 @@ function Authentication(props) {
 
   return (
     <div>
-      <h1>Welcome to StudyFluence</h1>
+      <h1 className="h1-style">Welcome to StudyFluence</h1>
 
       {authenticationType === "prof" ? (
         <ProffesionalView authenticationType={authenticationType} client={client}/>
       ) : (
         <StudentsView authenticationType={authenticationType} client={client} />
       )}
-      <footer>
+      <footer className="footer-login">
         {authenticationType === "prof" ? (
-          <button onClick={onClickStudentsViewBtn} className="singInAsBtn">
+          <button  onClick={onClickStudentsViewBtn} className="singInAsBtn button-login ">
             <u>Click here to Sign in as a Student</u>
           </button>
         ) : (
-          <button onClick={onClickProffesionalsViewBtn} className="singInAsBtn">
+          <button onClick={onClickProffesionalsViewBtn} className="singInAsBtn button-login ">
             <u>Click here to Sign in as a Proffesional</u>
           </button>
         )}

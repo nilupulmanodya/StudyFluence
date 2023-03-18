@@ -3,8 +3,12 @@ from rest_framework.authentication import SessionAuthentication
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializers import StdUserRegisterSerializer, UserLoginSerializer, UserSerializer, ProfUserRegisterSerializer
-from rest_framework import permissions, status
+from rest_framework import permissions, status, generics
 from .validations import custom_validation, validate_email, validate_password
+from rest_framework.permissions import IsAuthenticated
+from .models import Question, Answer
+from .serializers import QuestionSerializer, AnswerSerializer
+
 # Create your views here.
 
 class StdUserRegister(APIView):
@@ -114,3 +118,39 @@ class ContentView(APIView):
 			"hiworld": "Hi World"
 }
 		return Response({'content': content}, status=status.HTTP_200_OK)
+	
+
+
+
+class QuestionList(generics.ListCreateAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = QuestionSerializer
+	
+
+    def get_queryset(self):
+        return Question.objects.all()
+
+    def perform_create(self, serializer):
+        serializer.save(student=self.request.user)
+
+class QuestionDetail(generics.RetrieveAPIView):
+    permission_classes = [IsAuthenticated]
+    queryset = Question.objects.all()
+    serializer_class = QuestionSerializer
+
+class AnswerList(generics.ListCreateAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = AnswerSerializer
+    
+
+    def get_queryset(self):
+        return Answer.objects.filter(question_id=self.kwargs['question_pk'])
+
+    def perform_create(self, serializer):
+        question = Question.objects.get(pk=self.kwargs['question_pk'])
+        serializer.save(teacher=self.request.user, question=question)
+
+class AnswerDetail(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [IsAuthenticated]
+    queryset = Answer.objects.all()
+    serializer_class = AnswerSerializer

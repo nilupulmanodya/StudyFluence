@@ -12,12 +12,12 @@ function StudentsView(props) {
   // const singedInAs = useSelector((state) => state.auth.singedInAs);
 
   const onClickSignUpActive = () => {
-    const container = document.getElementById("container");
+    const container = document.getElementById("container-login");
     container.classList.add("right-panel-active");
   };
 
   const onClickSignInActive = () => {
-    const container = document.getElementById("container");
+    const container = document.getElementById("container-login");
     container.classList.remove("right-panel-active");
   };
 
@@ -86,40 +86,40 @@ function StudentsView(props) {
 
   return (
     <div>
-      <h2>Students View</h2>
+      <h2 className="h2-style">Students View</h2>
 
-      <div className="container" id="container">
+      <div className="container-login" id="container-login">
         <div className="form-container sign-up-container">
-          <form onSubmit={e => submitSignUp(e)}>
-            <h1>Create Account</h1>
+          <form className="form-login" onSubmit={e => submitSignUp(e)}>
+            <h1 className="h1-style">Create Account</h1>
 
-            <span>Use your email for registration</span>
-            <input type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} required />
-            <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required/>
-            <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)}  required/>
-            <button type="submit">Sign Up</button>
+            <span className="span-login">Use your email for registration</span>
+            <input className="input-login" type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} required />
+            <input className="input-login" type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required/>
+            <input className="input-login" type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)}  required/>
+            <button className="button-login"type="submit">Sign Up</button>
           </form>
         </div>
         <div className="form-container sign-in-container">
-          <form onSubmit={e => submitLogIn(e)}>
-            <h1>Sign in</h1>
-            <span>Enter your login credientials here</span>
-            <input type="username" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} required />
-            <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)}  required/>
-            <a href="/">Forgot your password?</a>
-            <button>Sign In</button>
+          <form className="form-login" onSubmit={e => submitLogIn(e)}>
+            <h1 className="h1-style">Sign in</h1>
+            <span className="span-login">Enter your login credientials here</span>
+            <input className="input-login" type="username" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} required />
+            <input className="input-login" type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)}  required/>
+            <a className="a-login" href="/">Forgot your password?</a>
+            <button className="button-login">Sign In</button>
           </form>
         </div>
         <div className="overlay-container">
           <div className="overlay">
             <div className="overlay-panel overlay-left">
-              <h1>Welcome Back!</h1>
-              <p>
+              <h1 className="h1-style">Welcome Back!</h1>
+              <p className="p-login">
                 To keep connected with us please Sign in with your personal
                 info.
               </p>
               <button
-                className="ghost"
+                className="ghost button-login"
                 id="signIn"
                 onClick={onClickSignInActive}
               >
@@ -127,13 +127,13 @@ function StudentsView(props) {
               </button>
             </div>
             <div className="overlay-panel overlay-right">
-              <h1>Hello,</h1>
-              <p>
+              <h1 className="h1-style">Hello,</h1>
+              <p className="p-login">
                 You are registering with StudentFluence as a Student. Are you
                 professional ?{" "}
               </p>
               <button
-                className="ghost"
+                className="ghost button-login"
                 id="signUp"
                 onClick={onClickSignUpActive}
               >

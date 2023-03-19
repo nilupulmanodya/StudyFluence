@@ -19,6 +19,7 @@ function AuthenticatedFrame(props){
     useEffect(()=>{
         switchNavigation(navigationView)
         window.scrollTo(0, 0)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[navigationView])
 
     const switchNavigation = (navigationView) => {
@@ -30,8 +31,8 @@ function AuthenticatedFrame(props){
           case 'resoureces':  return <Resources />;
           case 'booking':  return <Booking />;
           case 'hero':  return <Hero />;
-          case 'tests':  return <Tests />;
-          case 'forum':  return <Forum />;
+          case 'tests':  return <Tests client={client} />;
+          case 'forum':  return <Forum client={client} />;
   
           default:return <Home />
         }

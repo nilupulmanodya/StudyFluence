@@ -56,13 +56,17 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class AnswerSerializer(serializers.ModelSerializer):
+    teacher_name = serializers.CharField(
+        source="teacher.username", read_only=True)
     class Meta:
         model = Answer
-        fields = ('id', 'content', 'teacher', 'created_at')
+        fields = ('id', 'content', 'teacher', 'teacher_name','created_at')
 
 class QuestionSerializer(serializers.ModelSerializer):
     answer_set = AnswerSerializer(many=True, read_only=True)
+    student_name = serializers.CharField(
+        source="student.username", read_only=True)
 
     class Meta:
         model = Question
-        fields = ('id', 'title', 'description', 'created_at', 'student', 'answer_set')
+        fields = ('id', 'title', 'description', 'created_at', 'student', 'student_name','answer_set',)

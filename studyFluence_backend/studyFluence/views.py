@@ -69,8 +69,6 @@ class UserLogin(APIView):
 					userGroup = '1'
 				elif request.user.groups.all()[0].name == 'prof':
 					userGroup = '2'
-
-				print('reg userGroup output view',userGroup)
 				return Response(data = {"data":serializer.data,"userGroup":userGroup} , status=status.HTTP_200_OK)
 		
 
@@ -100,8 +98,6 @@ class UserView(APIView):
 				userGroup = '1'
 			elif request.user.groups.all()[0].name == 'prof':
 				userGroup = '2'
-
-			print('reg userGroup output view',userGroup)
 			return Response(data = {"data":serializer.data,"userGroup":userGroup} , status=status.HTTP_200_OK)
 		
 		except Exception as error:
@@ -123,7 +119,7 @@ class ContentView(APIView):
 
 
 class QuestionList(generics.ListCreateAPIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = (permissions.IsAuthenticated,)
     serializer_class = QuestionSerializer
 	
 
@@ -134,12 +130,12 @@ class QuestionList(generics.ListCreateAPIView):
         serializer.save(student=self.request.user)
 
 class QuestionDetail(generics.RetrieveAPIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = (permissions.IsAuthenticated,)
     queryset = Question.objects.all()
     serializer_class = QuestionSerializer
 
 class AnswerList(generics.ListCreateAPIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = (permissions.IsAuthenticated,)
     serializer_class = AnswerSerializer
     
 
@@ -151,6 +147,6 @@ class AnswerList(generics.ListCreateAPIView):
         serializer.save(teacher=self.request.user, question=question)
 
 class AnswerDetail(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = (permissions.IsAuthenticated,)
     queryset = Answer.objects.all()
     serializer_class = AnswerSerializer

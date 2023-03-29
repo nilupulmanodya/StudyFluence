@@ -5,6 +5,7 @@ const authSlice = createSlice({
   initialState: {
     singedInAs: '0',
     navigationView: 'home',
+    personalInfo : []
   },
   reducers: {
     setSingedInAs: (state, action) => {
@@ -13,8 +14,11 @@ const authSlice = createSlice({
     setNavigationView: (state, action) => {
       state.navigationView = action.payload;
     },
+    setPersonalInfo: (state, action) => {
+      state.personalInfo = action.payload;
+    },
   },
 });
 
-export const { setSingedInAs, setNavigationView } = authSlice.actions;
+export const { setSingedInAs, setNavigationView, setPersonalInfo } = authSlice.actions;
 export default authSlice.reducer;

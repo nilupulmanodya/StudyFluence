@@ -2,7 +2,7 @@ from django.contrib.auth.models import Group
 from rest_framework import serializers
 from django.contrib.auth import get_user_model, authenticate
 from django.core.exceptions import ValidationError
-from .models import Question, Answer
+from .models import Question, Answer, PersonalInfo
 
 UserModel = get_user_model()
 
@@ -70,3 +70,12 @@ class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
         fields = ('id', 'title', 'description', 'created_at', 'student', 'student_name','answer_set',)
+
+class PersonalInfoSerializer(serializers.ModelSerializer):
+    student_name = serializers.CharField(
+        source="student.username", read_only=True)
+
+    class Meta:
+        model = PersonalInfo
+        fields = ('fullName', 'age', 'location', 'firstLanguage', 'highestLevelofEducation', 'importanceOfTutionCost','afterLearningLocation',
+		'afterLearningPlan', 'financialPlan','budget','updated_at','student','student_name')

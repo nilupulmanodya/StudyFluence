@@ -8,5 +8,6 @@ urlpatterns = [
 	path('logout', views.UserLogout.as_view(), name='logout'),
 	path('user', views.UserView.as_view(), name='user'),
     path('questionlist', views.QuestionList.as_view(), name='questionlist'),
+	path('personalinfolist', views.PersonalInfoList.as_view(), name='personalinfolist'),
     path('answerlist/<int:question_pk>', views.AnswerList.as_view(), name='answerlist'),
 ]

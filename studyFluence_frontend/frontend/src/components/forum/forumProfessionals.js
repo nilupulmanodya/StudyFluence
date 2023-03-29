@@ -136,11 +136,11 @@ function ForumProfessionals (props){
 
 
 
-            <div className="tweet">
+            {/* <div className="tweet">
                <p>First tweet</p>
                <p>by John Doe</p>
                <p>Date</p>
-               {/* <!-- Add a new reply --> */}
+               {/* <!-- Add a new reply --> *
                <form className="form-style">
                   <label className="label-style-forum" htmlFor="reply">Reply:</label>
                   <br/>
@@ -148,7 +148,7 @@ function ForumProfessionals (props){
                   <br/><br/>
                   <button className="button-forum" type="submit">Reply</button>
                </form>
-               {/* <!-- Existing replies --> */}
+               {/* <!-- Existing replies --> *
                <div className="reply">
                   <p>First reply</p>
                   <p>by John Doe</p>
@@ -159,12 +159,12 @@ function ForumProfessionals (props){
                   <p>by John Doe</p>
                   <p>Date</p>
                </div>
-            </div>
-            <div className="tweet">
+            </div> */}
+            {/* <div className="tweet">
                <p>Second tweet</p>
                <p>by John Doe</p>
                <p>Date</p>
-               {/* <!-- Add a new reply --> */}
+               {/* <!-- Add a new reply --> *
                <form className="form-style">
                   <label className="label-style-forum" htmlFor="reply">Reply:</label>
                   <br/>
@@ -172,7 +172,7 @@ function ForumProfessionals (props){
                   <br/><br/>
                   <button className="button-forum" type="submit">Reply</button>
                </form>
-            </div>
+            </div> */}
          </div>
       </div>
    </section>

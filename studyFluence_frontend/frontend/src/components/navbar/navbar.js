@@ -1,10 +1,12 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setSingedInAs, setNavigationView } from '../../store/authSlice';
 
 function NavBar (props) {
     const client =props.client
     const dispatch = useDispatch();
+    const singedInAs = useSelector((state) => state.auth.singedInAs);
 
+    console.log('singedInAs',singedInAs)
 
     function submitLogout(e) {
         e.preventDefault();
@@ -67,26 +69,36 @@ function NavBar (props) {
             
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav mx-auto">
+                    <li className="nav-item">
+                            <a id="home" onClick={setNavigationHome} className="nav-link" href="#hero">Home</a>
+                    </li>
+
+                    {singedInAs ==='1'?
+                    
+                    <>
+                        <li className="nav-item">
+                            <a onClick={setNavigationAbout} className="nav-link" href="#about">About Us</a>
+                        </li>
+                        <li className="nav-item">
+                            <a onClick={setNavigationContact} className="nav-link" href="#booking">Contact</a>
+                        </li>
+                        <li className="nav-item">
+                            <a id="forum" onClick={setNavigationResources} className="nav-link" href="#resources">Resources</a>
+                        </li>
+                        <li className="nav-item">
+                            <button onClick={setNavigationTests} className="nav-link button-forum-nav">Tests</button>
+                        </li>
+                        <li className="nav-item">
+                            <a onClick={setNavigationContact} className="nav-link" href="#booking">Contact</a>
+                        </li>
+                    
+                    </>
+                    :  null }
+                    
 
                     
-                    <li className="nav-item">
-                        <a id="home" onClick={setNavigationHome} className="nav-link" href="#hero">Home</a>
-                    </li>
-
-                    <li className="nav-item">
-                        <a onClick={setNavigationAbout} className="nav-link" href="#about">About Us</a>
-                    </li>
-
-                    <li className="nav-item">
-                        <a onClick={setNavigationContact} className="nav-link" href="#booking">Contact</a>
-                    </li>
-
-                    <li className="nav-item">
-                        <a id="forum" onClick={setNavigationResources} className="nav-link" href="#resources">Resources</a>
-                    </li>
-                    <li className="nav-item">
-                        <button onClick={setNavigationTests} className="nav-link button-forum-nav">Tests</button>
-                    </li>
+                    
+                    
                     <li className="nav-item">
                         <button onClick={setNavigationForum} className="nav-link button-forum-nav">Forum</button>
                     </li>

@@ -12,19 +12,9 @@ function Gallery (){
                             <h3 className="mb-lg-3 mb-3">Services We Offer</h3>
                             
                             <ul>
-                                <li><p>Lorem Ipsum is simply dummy text of</p></li>
-                                <li><p>Lorem Ipsum is simply dummy text of</p></li>
-                                <li><p>Lorem Ipsum is simply dummy text of</p></li>
-                              </ul>
-                        </div>
-
-                        <div className="col-lg-6 col-6 pe-0">
-                            <h3 className="mb-lg-3 mb-3">Products We Offer</h3>
-                            
-                            <ul>
-                                <li><p>Lorem Ipsum is simply dummy text of</p></li>
-                                <li><p>Lorem Ipsum is simply dummy text of</p></li>
-                                <li><p>Lorem Ipsum is simply dummy text of</p></li>
+                                <li><p>Academic and career tests and personalized recommendations based on personal and demographic information.</p></li>
+                                <li><p>Trained and experienced academic and career counsellors.</p></li>
+                                <li><p>Additional resources for students to plan and organize their future education.</p></li>
                               </ul>
                         </div>
 

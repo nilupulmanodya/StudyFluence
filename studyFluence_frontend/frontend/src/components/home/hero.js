@@ -1,8 +1,8 @@
 function Hero (){
     console.log('Hero page')
     return (
-        <div>
-             <main>
+
+             
             <section className="hero" id="hero">
                 <div className="container">
                     <div className="row">
@@ -19,6 +19,8 @@ function Hero (){
                                     </div>
                                 </div>
                             </div>
+                            </div>
+                            <div className="col-md-6 ps-0">
 
                             <div className="heroText d-flex flex-column justify-content-center">
 
@@ -31,13 +33,18 @@ function Hero (){
                                     </div>
                                 </h1>
 
-                                <p className="mb-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                <p className="mb-4">Welcome to Studyfluence! We specialize in providing personalized academic and career guidance to
+                                    students who are looking to achieve their goals. Our team of experienced professionals is dedicated
+                                    to helping you succeed by providing you with customized support and guidance based on your
+                                    unique needs and interests. Regardless of your grade in school, we have the resources and
+                                    expertise to help you make the most of your education and achieve your dreams. Browse our site to
+                                    learn more about our services and how we can help you reach your full potential.</p>
 
-                                <div className="heroLinks d-flex flex-wrap align-items-center">
+                                {/* <div className="heroLinks d-flex flex-wrap align-items-center">
                                     <a className="custom-link me-4" href="#about" data-hover="Learn More">Learn More</a>
 
                                     <p className="contact-phone mb-0"><i className="bi-phone"></i> +94-023-0340</p>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
 
@@ -45,14 +52,7 @@ function Hero (){
                 </div>
             </section>
             
-        </main>
-
-
-
-
-
-
-        </div>
+      
     )
 }
 

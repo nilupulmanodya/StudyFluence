@@ -6,8 +6,8 @@ from .serializers import StdUserRegisterSerializer, UserLoginSerializer, UserSer
 from rest_framework import permissions, status, generics
 from .validations import custom_validation, validate_email, validate_password
 from rest_framework.permissions import IsAuthenticated
-from .models import Question, Answer
-from .serializers import QuestionSerializer, AnswerSerializer
+from .models import Question, Answer, PersonalInfo
+from .serializers import QuestionSerializer, AnswerSerializer, PersonalInfoSerializer
 
 # Create your views here.
 
@@ -15,7 +15,7 @@ class StdUserRegister(APIView):
 	permission_classes = (permissions.AllowAny,)
 	
 	def post(self, request):
-		
+		print("data",request.data)
 		try:
 			clean_data = custom_validation(request.data)
 			serializer = StdUserRegisterSerializer(data=clean_data)
@@ -64,6 +64,8 @@ class UserLogin(APIView):
 				login(request, user)
 				print('request.user', request.user.get_username())
 				userGroup = '0'
+
+				print('request.user.groups.all()[0].name',request.user.groups.all()[0].name)
 				
 				if request.user.groups.all()[0].name == 'std':
 					userGroup = '1'
@@ -150,3 +152,15 @@ class AnswerDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (permissions.IsAuthenticated,)
     queryset = Answer.objects.all()
     serializer_class = AnswerSerializer
+
+
+class PersonalInfoList(generics.ListCreateAPIView):
+    permission_classes = (permissions.IsAuthenticated,)
+    serializer_class = PersonalInfoSerializer
+    def get_queryset(self):
+      print('get personal info user id',self.request.user.id)
+      return PersonalInfo.objects.filter(student=self.request.user.id)
+    
+
+    def perform_create(self, serializer):
+        serializer.save(student=self.request.user)

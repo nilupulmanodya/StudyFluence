@@ -54,3 +54,21 @@ class Answer(models.Model):
 
     class Meta:
         app_label = 'studyFluence'
+
+class PersonalInfo(models.Model):
+    fullName = models.TextField()
+    age = models.TextField()
+    location = models.TextField()
+    firstLanguage = models.TextField()
+    highestLevelofEducation = models.TextField()
+    importanceOfTutionCost = models.TextField()
+    afterLearningLocation = models.TextField()
+    afterLearningPlan = models.TextField()
+    financialPlan = models.TextField()
+    budget = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    student = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    class Meta:
+        app_label = 'studyFluence'

@@ -11,9 +11,14 @@ function About (){
                         <div className="col-lg-6 col-md-6 col-12">
                             <h2 className="mb-lg-3 mb-3">About Us</h2>
 
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                            <p>Looking for a website that can help you identify your strengths and interests and guide you towards a fulfilling career? Look no
+                            further than Studyfluence! Our website offers a range of assessments and tests to help you discover your career interests and
+                            aptitudes, explore different career paths, and plan your academic journey. Our tests are designed to be user-friendly and
+                            comprehensive, providing you with detailed insights into your personality traits, skills, and knowledge.</p>
 
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                            <p> With our expert guidance
+                            and support, you can make informed decisions about your academic and career goals and achieve the success you deserve. So
+                            why wait? Visit Studyfluence today to get started on your journey towards a rewarding future!</p>
                         </div>
 
                         <div className="col-lg-6 col-6 ps-0">

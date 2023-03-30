@@ -1,3 +1,6 @@
+import {Link } from "react-router-dom";
+
+
 function Tests (){
     console.log('Timeline page')
     return (
@@ -28,7 +31,11 @@ function Tests (){
                                         subjects that may be well-suited to their strengths and career goals.
                                         With this test, students can make informed decisions about their
                                         academic paths, and choose optional subjects that align with their
-                                        interests and future aspirations.</p>
+                                        interests and future aspirations.
+                                        <br/><br/>
+                                        <Link to="/olSubSelectionTest">Get Start Now</Link>
+                    
+                                        </p>
                                 </div>
 
                                 <div className="col-3 col-sm-1 order-2 timeline-icons text-md-center">
@@ -51,7 +58,12 @@ function Tests (){
                                         subjects that may be well-suited to their strengths and career goals.
                                         With this test, students can make informed decisions about their
                                         academic paths, and choose optional subjects that align with their
-                                        interests and future aspirations.</p>
+                                        interests and future aspirations.<br/><br/>
+                                        <Link to="/alSubSelectionTest">Get Start Now</Link>
+                                        </p>
+
+                                        
+
                                 </div>
 
                                 <div className="col-3 col-sm-1 order-2 timeline-icons text-md-center">
@@ -74,7 +86,11 @@ function Tests (){
                                     personalized recommendations for fields of study that may be a good
                                     fit. With this test, students can make informed decisions about their
                                     higher education options, and choose programs of study that align
-                                    with their interests and aspirations.</p>
+                                    with their interests and aspirations.
+                                    
+                                    <br/><br/>
+                                        <Link to="/higherEducationSelectionTest">Get Start Now</Link>
+                                        </p>
                                 </div>
 
                                 <div className="col-3 col-sm-1 order-2 timeline-icons text-md-center">
@@ -94,7 +110,10 @@ function Tests (){
                                     suited to their interests, skills, and career goals. This test assesses the student's personality traits, work
                                     style, and areas of interest, and provides personalized recommendations for vocational training programs
                                     that may be a good fit. With this test, students can make informed decisions about their career options,
-                                    and choose vocational training programs that align with their interests and aspirations</p>
+                                    and choose vocational training programs that align with their interests and aspirations
+                                    <br/><br/>
+                                        <Link to="/vocationalTrainingSelectionTest">Get Start Now</Link>
+                                    </p>
                                 </div>
 
                                 <div className="col-3 col-sm-1 order-2 timeline-icons text-md-center">
@@ -114,7 +133,10 @@ function Tests (){
                                     <p>Our career assessment test is designed to help school students determine what fields of work may be best suited to their
                                 interests, skills, and career goals. This test assesses the student's personality traits, academic strengths, and areas of
                                 interest, and provides personalized recommendations for fields of work that may be a good fit. With this test, students can
-                                make informed decisions about their future career paths and plan their education accordingly to achieve their goals.</p>
+                                make informed decisions about their future career paths and plan their education accordingly to achieve their goals.
+                                <br/><br/>
+                                        <Link to="/careerSelectionTest">Get Start Now</Link>
+                                </p>
                                 </div>
 
                                 <div className="col-3 col-sm-1 order-2 timeline-icons text-md-center">

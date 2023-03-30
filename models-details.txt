@@ -1,0 +1,5 @@
+AL sub selection - logistic regression
+Ol sub selection - SVC(kernel="rbf")
+higher education test - SVC(kernel="poly")
+vocational training - SVC(kernel="poly")
+career test - KNN(n_neighbors=1)

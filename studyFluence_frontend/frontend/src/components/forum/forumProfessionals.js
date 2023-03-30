@@ -37,7 +37,7 @@ function ForumProfessionals (props){
             alert(errorData)
             }
         })      
- 
+        window.location.reload(false)
             
       }
 

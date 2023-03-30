@@ -10,6 +10,7 @@ import CareerSelection from './components/testsQuestions/CareerSelection'
 import VocationalTrainingSelectionTest from './components/testsQuestions/VocationalTrainingSelection'
 import OLSubSelectionTest from './components/testsQuestions/OLSubSelection'
 import HigherEducationSelection from './components/testsQuestions/HigherEducationSelection'
+import JobCategoriesPage from './components/home/job_categories'
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -22,6 +23,7 @@ root.render(
            <Route path="/vocationalTrainingSelectionTest" element={<VocationalTrainingSelectionTest />} />
            <Route path="/olSubSelectionTest" element={<OLSubSelectionTest />} />
            <Route path="/higherEducationSelectionTest" element={<HigherEducationSelection />} />
+           <Route path="/jobCategoriesPage" element={<JobCategoriesPage />} />
 
            
           {/*<Route path="blogs" element={<Blogs />} />

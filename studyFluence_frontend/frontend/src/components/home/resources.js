@@ -1,3 +1,5 @@
+import {Link } from "react-router-dom";
+
 function Resources (){
     console.log('Hero page')
     return (
@@ -24,7 +26,8 @@ function Resources (){
                         </div>
                         <div className="col">
                             <img src="assets/images/scope_for_career.png" style={{height: "100%"}} className="img-fluid galleryImage" alt="Resources " title="Resources"/>
-                            <p>Scope for Careers</p>
+                            
+                            <Link to="/jobCategoriesPage"><p>Scope for Careers</p></Link>
                         </div>
                         <div className="col">
                             <img src="assets/images/skill_dev.png" style={{height: "100%"}} className="img-fluid galleryImage" alt="Resources " title="Resources"/>

@@ -4,8 +4,12 @@ import Gallery from './gallery';
 import Booking from './booking';
 import Resources from './resources';
 
+import { useSelector } from 'react-redux';
+
 function Home (){
-    console.log('home page')
+
+    const singedInAs = useSelector((state) => state.auth.singedInAs);
+    console.log('home page singedInAs',singedInAs)
     return (
         <div>
              <main>
@@ -23,9 +27,9 @@ function Home (){
             {/* <!-- Section booking --> */}
             <Booking/>
 
-
             {/* <!-- Section Resources --> */}
-            <Resources/>
+            {singedInAs !=='2' && <Resources/>
+            }
 
 
             

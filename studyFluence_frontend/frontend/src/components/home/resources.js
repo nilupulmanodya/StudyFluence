@@ -22,7 +22,8 @@ function Resources (){
 
                         <div className="col">
                             <img src="assets/images/book_counselor.png" style={{height: "100%"}} className="img-fluid galleryImage" alt="Resources " title="Resources"/>
-                            <p>Book a Counsellor</p>
+
+                            <Link to="/listCounsellors"><p>Book a Counsellor</p></Link>
                         </div>
                         <div className="col">
                             <img src="assets/images/scope_for_career.png" style={{height: "100%"}} className="img-fluid galleryImage" alt="Resources " title="Resources"/>

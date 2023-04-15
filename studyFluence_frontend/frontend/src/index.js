@@ -11,6 +11,7 @@ import VocationalTrainingSelectionTest from './components/testsQuestions/Vocatio
 import OLSubSelectionTest from './components/testsQuestions/OLSubSelection'
 import HigherEducationSelection from './components/testsQuestions/HigherEducationSelection'
 import JobCategoriesPage from './components/home/job_categories'
+import ListCounsellors from './components/home/book_counsellor/listCounsellors'
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -24,6 +25,7 @@ root.render(
            <Route path="/olSubSelectionTest" element={<OLSubSelectionTest />} />
            <Route path="/higherEducationSelectionTest" element={<HigherEducationSelection />} />
            <Route path="/jobCategoriesPage" element={<JobCategoriesPage />} />
+           <Route path="/listCounsellors" element={<ListCounsellors />} />
 
            
           {/*<Route path="blogs" element={<Blogs />} />

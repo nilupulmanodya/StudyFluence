@@ -1,5 +1,4 @@
 function Booking (){
-    console.log('Hero page')
     return (
         <div>
              <main>

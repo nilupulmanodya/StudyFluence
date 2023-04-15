@@ -914,3 +914,29 @@ strong {
     left: 42px;
   }
 }
+
+/*---------------------------------------
+  Booking Counsellors STYLES               
+-----------------------------------------*/
+
+.row_counsellor {
+  display: flex;
+  /* margin-right: 15px;
+  margin-left: 15px; */
+  width: "80%";
+  border: 2px solid salmon;
+  justify-content: center;
+  border-radius: 5%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+
+}
+.img_counsellor {
+  width: 200;
+  height: 200;
+  padding: 10%;
+  border-radius: 50%;
+}
+.text_counsellor{
+  padding: 4%;        
+}

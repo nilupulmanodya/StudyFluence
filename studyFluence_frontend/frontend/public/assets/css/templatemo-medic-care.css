@@ -977,3 +977,78 @@ textarea {
   /* border-color: #e28743; */ 
   
 }
+
+/*---------------------------------------
+  Booking Counsellors STYLES               
+-----------------------------------------*/
+
+.row_counsellor {
+  display: flex;
+  /* margin-right: 15px;
+  margin-left: 15px; */
+  width: "80%";
+  border: 2px solid salmon;
+  justify-content: center;
+  border-radius: 5%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  align-content: flex-end;
+
+}
+.img_counsellor {
+  
+  padding: 5%;
+  border-radius: 50%;
+}
+.text_counsellor{
+  padding: 4%;  
+  width: 100%;      
+
+}
+
+.text_counsellor{
+  padding: 4%;        
+}
+
+.detail_container{
+margin: auto;
+}
+
+.info_btn_container{
+  margin: 10px;
+}
+
+.info_img_counsellor {
+  margin-left: 5%;
+  margin-top: 1%;
+  border-radius: 50%;
+  
+}
+
+.bookPaymentContainer {
+  width: 100%;
+}
+
+.book_row_counsellor {
+  flex-wrap: nowrap;
+  display: flex;
+  /* margin-right: 15px;
+  margin-left: 15px; */
+  width: "80%";
+  border: 2px solid salmon;
+  justify-content: center;
+  border-radius: 5%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  align-content: flex-end;
+
+}
+
+.payement_card {
+  border-radius: 5%;
+  border: 2px solid salmon;
+  justify-content: center;
+  text-align: center;
+  margin: 5%;
+  background: hsl(3, 82%, 96%);
+}
